@@ -395,3 +395,9 @@ class GetSlimDatetimeTestCase(unittest.TestCase):
         dt_timestamp = time.mktime(dt.timetuple())
         self.assertEqual(a_date, datetime_from_timestamp(dt_timestamp))
 
+    def test_datetime_from_datetime(self):
+        dt = datetime.datetime(2013, 9, 7)
+        a_date = SlimDatetime(dt)
+
+        self.assertEqual(a_date, datetime_from_datetime(dt))
+

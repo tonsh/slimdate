@@ -233,3 +233,6 @@ def datetime_from_string(date_str, fmt=None):
     dt = str2datetime(date_str, fmt)
     return SlimDatetime(dt)
 
+def datetime_from_datetime(date_time):
+    return SlimDatetime(date_time)
+
