@@ -138,6 +138,14 @@ class SlimDatetime(object):
 
         return datetime.datetime.combine(self.date, v_time)
 
+    def last_day(self, days=None):
+        days = days or 0
+        return self.beginning_of_day() - datetime.timedelta(days=days)
+
+    def next_day(self, days=None):
+        days = days or 0
+        return self.beginning_of_day() + datetime.timedelta(days=days)
+
     def last_week(self, weekday=None):
         days = 7
         if weekday:

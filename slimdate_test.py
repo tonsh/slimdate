@@ -134,7 +134,41 @@ class SlimDateTestCase(unittest.TestCase):
         expect = datetime.datetime(2013, 12, 4, 20, 43, 59, 999999)
         self.assertEqual(expect, self.slim_date.end_of_minute())
 
-    def test_lastweek(self):
+    def test_last_day(self):
+        # 默认
+        expect = datetime.datetime(2013, 12, 4)
+        self.assertEqual(expect, self.slim_date.last_day())
+
+        # 今天
+        expect = datetime.datetime(2013, 12, 4)
+        self.assertEqual(expect, self.slim_date.last_day(0))
+
+        # 昨天
+        expect = datetime.datetime(2013, 12, 3)
+        self.assertEqual(expect, self.slim_date.last_day(1))
+
+        # 前 10 天
+        expect = datetime.datetime(2013, 11, 24)
+        self.assertEqual(expect, self.slim_date.last_day(10))
+
+    def test_last_day(self):
+        # 默认
+        expect = datetime.datetime(2013, 12, 4)
+        self.assertEqual(expect, self.slim_date.next_day())
+
+        # 今天
+        expect = datetime.datetime(2013, 12, 4)
+        self.assertEqual(expect, self.slim_date.next_day(0))
+
+        # 昨天
+        expect = datetime.datetime(2013, 12, 5)
+        self.assertEqual(expect, self.slim_date.next_day(1))
+
+        # 前 10 天
+        expect = datetime.datetime(2013, 12, 14)
+        self.assertEqual(expect, self.slim_date.next_day(10))
+
+    def test_last_week(self):
         # 默认
         expect = datetime.datetime(2013, 11, 27)
         self.assertEqual(expect, self.slim_date.last_week())
