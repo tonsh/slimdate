@@ -101,9 +101,12 @@ class SlimDatetime(object):
 
         return self._weekday
 
-    def change_time(self, hour=0, minute=0, second=0):
+    def change_time(self, hour=0, minute=0, second=0, microsecond=0):
         """ 重置time部分, 未指定地参数将被置0 """
-        return self.value.replace(hour=hour, minute=minute, second=second)
+        return self.value.replace(hour=hour,
+                                minute=minute,
+                                second=second,
+                                microsecond=microsecond)
 
     def beginning_of_day(self):
         return datetime.datetime.combine(self.date, self.time.min)

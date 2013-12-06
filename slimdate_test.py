@@ -89,6 +89,27 @@ class SlimDateTestCase(unittest.TestCase):
         self.assertEqual(3, self.slim_date.weekday)
         self.assertIsNotNone(self.slim_date._weekday)
 
+    def test_change_time(self):
+        date_time = datetime.datetime(2013, 12, 04, 20, 43, 11, 999888)
+        slim_date = SlimDatetime(date_time)
+
+        expect = datetime.datetime(2013, 12, 4)
+        self.assertEqual(expect, slim_date.change_time())
+
+        expect = datetime.datetime(2013, 12, 4, 10)
+        self.assertEqual(expect, slim_date.change_time(hour=10))
+
+        expect = datetime.datetime(2013, 12, 4, 10, 5)
+        self.assertEqual(expect, slim_date.change_time(hour=10, minute=5))
+        
+        expect = datetime.datetime(2013, 12, 4, 10, 5, 20)
+        dt = slim_date.change_time(hour=10, minute=5, second=20)
+        self.assertEqual(expect, dt)
+
+        expect = datetime.datetime(2013, 12, 4, 10, 5, 20, 99)
+        dt = slim_date.change_time(hour=10, minute=5, second=20, microsecond=99)
+        self.assertEqual(expect, dt)
+
     def test_beginning_of_day(self):
         expect = datetime.datetime(2013, 12, 4)
         self.assertEqual(expect, self.slim_date.beginning_of_day())
