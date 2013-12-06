@@ -7,7 +7,8 @@ import unittest
 from slimdate import (SlimDatetime,
                     str2datetime,
                     datetime_from_timestamp,
-                    datetime_from_string)
+                    datetime_from_string,
+                    datetime_from_datetime)
 
 
 class SlimDateTestCase(unittest.TestCase):

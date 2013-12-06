@@ -101,6 +101,10 @@ class SlimDatetime(object):
 
         return self._weekday
 
+    def change_time(self, hour=0, minute=0, second=0):
+        """ 重置time部分, 未指定地参数将被置0 """
+        return self.value.replace(hour=hour, minute=minute, second=second)
+
     def beginning_of_day(self):
         return datetime.datetime.combine(self.date, self.time.min)
 
@@ -108,8 +112,7 @@ class SlimDatetime(object):
         return datetime.datetime.combine(self.date, self.time.max)
 
     def beginning_of_hour(self):
-        v_time = datetime.time(self.hour)
-        return datetime.datetime.combine(self.date, v_time)
+        return self.change_time(hour=self.hour)
 
     def end_of_hour(self):
         time_max = self.time.max
